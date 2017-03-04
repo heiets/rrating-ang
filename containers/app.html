@@ -1,0 +1,33 @@
+<div class="searchform">
+    <input type="text" ng-model="search" ng-change="searchData(this)">
+</div>
+<div class="list">
+    <div class="item active">
+        <div class="item__id" ng-click="sortFilter('id', $event)">№</div>
+        <div class="item__title" ng-click="sortFilter('title', $event)">Title</div>
+        <div class="item__town" ng-click="sortFilter('town', $event)">Town</div>
+        <div class="item__likes" ng-click="sortFilter('likes', $event)">Likes</div>
+        <div class="item__price" ng-click="sortFilter('price', $event)">Price</div>
+    </div>
+    <li>
+        <div class="notFound" ng-show="data.length == 0">
+            Not found
+        </div>
+    </li>
+    <ul ng-repeat="item in data">
+        <li>
+            <div class="item" ng-click="showDesc(item.id, $event)">
+                <div class="item__id">{{item.id}}</div>
+                <div class="item__title">{{item.title}}</div>
+                <div class="item__town">{{item.town}}</div>
+                <div class="item__likes">
+                    <div class="decLike" ng-click="decLike(item.likes, $index, $event)"></div>
+                    {{item.likes}}
+                    <div class="incLike" ng-click="incLike(item.likes, $index, $event)"></div>
+                </div>
+                <div class="item__price">{{item.price}}</div>
+            </div>
+            <desc class="desc" id="{{item.id}}"></desc>
+        </li>
+    </ul>
+</div>
